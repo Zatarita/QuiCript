@@ -3,7 +3,7 @@ CEA/H2A de/compressor.
 
 QuiCript is a collection of python scripts that aims to be an all-in-one solution your halo compression needs. Currently it has been tested on PC versions, it is currently unknown what other formats may exist on console, research will be done.
 
-you can access each module independantly with their respective modules, or run the QuiCript as a CLI style script. The syntax is as follows:
+you can access each module independantly, or run the QuiCript as a CLI style script. The syntax is as follows:
 
 ```
 "python QuiCript.py 'h1a'/'h2a'/'h2am' -c/-d 'path/to/file' 'path/to/second/file' ... 'path/to/last/file' "
