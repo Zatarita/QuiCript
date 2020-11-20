@@ -25,7 +25,8 @@ def compressor(data):
         header.writeInt(len(chunks))
         # first offset
         offset = 0x40000
-
+        
+        # for each chunk
         for chunk in chunks:
             # write the offset to the header
             header.writeInt(offset)
