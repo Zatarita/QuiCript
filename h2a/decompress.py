@@ -2,7 +2,7 @@ import zlib
 import os
 
 from streamIO import StreamReader
-from ..shared import verify_zlib
+from shared import verify_zlib
 
 
 def decompressor(data):
