@@ -34,10 +34,11 @@ def init_QuiCript():
         # read data
         data = open(file, "rb").read()
 
-        if compress == "-d":
-            if not verify_compression(data, compression_type):
-                print("File failed integrity test")
-                break
+        # Lost verify_compression somewhere in translation
+        #if compress == "-d":
+        #    if not verify_compression(data, compression_type):
+        #        print("File failed integrity test")
+        #        break
 
         if compression_type == "h1a":
             if compress == "-c":
