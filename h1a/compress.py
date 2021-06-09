@@ -24,7 +24,7 @@ def compressor(data):
         # prime the header with chunk count
         header.writeInt(len(chunks))
         # first offset
-        offset = len(chunks) * 4
+        offset = (len(chunks) * 4) + 4
         
         # for each chunk
         for chunk in chunks:
