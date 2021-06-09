@@ -13,7 +13,7 @@ def decompressor(data):
     # create a stream, and store the blam! header for later. (header size = 0x1000)
     stream = StreamReader(data)
     blam_header = stream.read(0x1000)
-    
+
     chunks = []
     # read the header until an empty entry is encountered
     for i in range(0x500):
@@ -27,13 +27,13 @@ def decompressor(data):
     with open("tmp", "wb") as file:
         file.write(blam_header)
         # for each chunk, decompress and append to the file
-        for i in range(len(chunks) - 1):
+        for i in range(len(chunks)):
             # if chunk size is negative, the chunk is uncompressed
             if chunks[i][0] < 0:
-                file.write(data[chunks[i][1] : chunks[i + 1][1]])
+                file.write(data[chunks[i][1] : chunks[i][1] + chunks[i][0]])
                 continue
             # if the chunk size is not negative, and not valid zlib. Curropt file
-            elif not verify_zlib(data[chunks[i][1] : chunks[i + 1][1]]):
+            elif not verify_zlib(data[chunks[i][1] : chunks[i][1] + chunks[i][0]]):
                 print("Unable to decompress file: \n\tchunk " + str(i) + " does not contain valid zlib header\n")
                 return None
             # chunk size is positive, and it has a valid zlib header. decompress and write to file
