@@ -24,7 +24,7 @@ def compressor(data):
         # prime the header with chunk count
         header.writeInt(len(chunks))
         # first offset
-        offset = 0x40000
+        offset = len(chunks) * 4
         
         # for each chunk
         for chunk in chunks:
@@ -40,9 +40,6 @@ def compressor(data):
             # write the compressed chunk size, and the compressed chunk
             file.write(struct.pack("<I", len(chunk)))
             file.write(compressed_chunk)
-
-    # the header has a fixed size of 0x40000
-    header.write(b'\0' * (0x40000 - header.tell()))
 
     # read back the file buffer
     with open("tmp", "rb") as file:
